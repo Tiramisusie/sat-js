@@ -1,12 +1,10 @@
-SAT.js
-======
+# SAT.js
 
  - [Classes](#classes)
- - [Collision Tests](#tests)
+ - [Collision Tests](#collision-tests)
  - [Examples](#examples)
 
-About
------
+## About
 
 SAT.js is a simple JavaScript library for performing collision detection (and projection-based collision response) of simple 2D shapes.  It uses the [Separating Axis Theorem](http://en.wikipedia.org/wiki/Hyperplane_separation_theorem) (hence the name)
 
@@ -18,15 +16,13 @@ It also supports checking whether a point is inside a circle or polygon.
 
 It's released under the [MIT](http://en.wikipedia.org/wiki/MIT_License) license.
 
-Current version: `0.5.0`. [Annotated source code](http://jriecken.github.io/sat-js/docs/SAT.html) is available.
+Current version: `0.7.0`. [Annotated source code](http://jriecken.github.io/sat-js/docs/SAT.html) is available.
 
 Nicely compresses with the [Google Closure Compiler](https://developers.google.com/closure/compiler/) in **Advanced** mode to about 6KB (2KB gzipped)
 
 To use it in node.js, you can run `npm install sat` and then use it with `var SAT = require('sat');`
 
-<a name="classes"></a>
-Classes
---------
+## Classes
 
 SAT.js contains the following JavaScript classes:
 
@@ -75,7 +71,6 @@ It has the following properties:
  - `pos` - A Vector representing the center of the circle.
  - `r` - The radius of the circle
 
-
 ### SAT.Polygon
 
 This is a **convex** polygon, whose points are specified in a counter-clockwise fashion.  It is created by calling:
@@ -111,6 +106,8 @@ It has the following methods:
  - `setOffset(offset)` - Set the current offset
  - `rotate(angle)` - Rotate the original points of this polygon counter-clockwise (around its local coordinate system) by the specified number of radians. The `angle` rotation will be applied on top of this rotation.
  - `translate(x, y)` - Translate the original points of this polygon (relative to the local coordinate system) by the specified amounts. The `offset` translation will be applied on top of this translation.
+ - `getAABB()` - Compute the axis-aligned bounding box. Returns a new Polygon every time it is called. Is performed based on the `calcPoints`.
+ - `getCentroid()` - Compute the [Centroid](https://en.wikipedia.org/wiki/Centroid#Centroid_of_a_polygon) of the polygon. Is performed based on the `calcPoints`.
 
 ### SAT.Box
 
@@ -148,10 +145,7 @@ It has the following methods:
 
 - `clear()` - Clear the response so that it is ready to be reused for another collision test.
 
-
-<a name="tests"></a>
-Collision Tests
----------------
+## Collision Tests
 
 SAT.js contains the following collision tests:
 
@@ -191,9 +185,7 @@ Returns `true` if there is a collision, `false` otherwise.
 
 *NOTE: If you want to detect a collision between `Box`es, use the `toPolygon()` method*
 
-<a name="examples"></a>
-Examples
---------
+## Examples
 
 Test two circles
 ```javascript
